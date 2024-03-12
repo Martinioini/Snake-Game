@@ -10,13 +10,25 @@ class Snake:
     
     def __init__(self):
 
-        startingPositions = [(0, 0), (-20, 0), (-40, 0)]
+        self.startingPositions = [(0, 0), (-20, 0), (-40, 0)]
         self.tiles = []
 
-        for pos in startingPositions:
+        for pos in self.startingPositions:
             self.addSegment(pos)
         
         self.head = self.tiles[0]
+
+    def reset(self):
+        
+        for seg in self.tiles:
+            seg.goto(1000, 1000)
+            
+        self.tiles.clear()
+        for pos in self.startingPositions:
+            self.addSegment(pos)
+
+        self.head = self.tiles[0]
+        
 
     def addSegment(self, position):
         

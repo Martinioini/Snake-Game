@@ -39,8 +39,8 @@ while gameIsOn:
 
     #Collision with wall
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        gameIsOn = False
-        score.gameOver()
+       score.reset()
+       snake.reset() 
 
     #Collision with tail
     for segment in snake.tiles:
@@ -48,9 +48,9 @@ while gameIsOn:
         if segment == snake.head:
             pass
 
-        elif(snake.head.distance(segment) < 5):
-            gameIsOn = False
-            score.gameOver()
+        elif(snake.head.distance(segment) < 10):
+            score.reset()
+            snake.reset()
 
 
 screen.exitonclick()
